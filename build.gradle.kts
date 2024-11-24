@@ -56,15 +56,4 @@ plugins {
     alias(libs.plugins.room) apply false
     alias(libs.plugins.module.graph) apply true // Plugin applied to allow module graph generation
 }
-plugins {
-    id "org.sonarqube" version "4.1.1.3225"  // Add this plugin if it's not already there
-}
 
-sonarqube {
-    properties {
-        property "sonar.projectKey", "santosh-eic_android_code-" // Replace with your actual project key
-        property "sonar.organization", "santosh-eic" // Replace with your actual organization
-        property "sonar.host.url", "https://sonarcloud.io"
-        property "sonar.jacoco.reportPaths", "$buildDir/reports/jacoco/testDebugUnitTest.exec" // Adjust if necessary for your project
-    }
-}
