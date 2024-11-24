@@ -253,3 +253,12 @@ jobs:
           compression-level: 1
           overwrite: false
           path: '**/build/reports/jacoco/'
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v2
+        with:
+          organization: santosh-eic  # Replace with your organization key
+          projectKey: santosh-eic_android_code-     # Replace with your project key
+          token: ${{ secrets.SONAR_TOKEN }}          # Token stored in GitHub secrets
+        env:
+          SONAR_HOST_URL: https://sonarcloud.io      
