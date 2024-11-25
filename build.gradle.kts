@@ -26,6 +26,7 @@ buildscript {
         classpath(libs.google.oss.licenses.plugin) {
             exclude(group = "com.google.protobuf")
         }
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.7.1"
     }
 
 }

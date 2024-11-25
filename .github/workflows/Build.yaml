@@ -254,13 +254,29 @@ jobs:
           overwrite: false
           path: '**/build/reports/jacoco/'
 
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@v2
-        with:
-          args: -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-          #organization: santosh-eic  # Replace with your organization key
-          #projectKey: santosh-eic_android_code-     # Replace with your project key
+      # - name: SonarCloud Scan
+      #   uses: SonarSource/sonarcloud-github-action@v2
+      #   with:
+      #     args: -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+      #     #organization: santosh-eic  # Replace with your organization key
+      #     #projectKey: santosh-eic_android_code-     # Replace with your project key
           
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: https://sonarcloud.io      
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #     SONAR_HOST_URL: https://sonarcloud.io      
+
+  static-code-analysis:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout the code
+            uses: actions/checkout@v2
+    
+          - name: set up JDK 11
+            uses: actions/setup-java@v1
+            with:
+              java-version: 11
+    
+          - name: SonarCloud Scan
+            run: ./gradlew app:sonarqube -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+            env:
+              GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
