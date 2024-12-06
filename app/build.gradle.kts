@@ -154,7 +154,7 @@ sonar {
   properties {
     property("sonar.projectKey", "santosh-eic_android_code-")
     property("sonar.organization", "santosh-eic")
-    property("sonar.host.url", "https://sonarcloud.io")
+    property("sonar.host.url", "https://sonarcloud.io") 
     property("sonar.java.coveragePlugin", "jacoco")
     property("sonar.jacoco.reportPaths", "build/reports/jacoco/test/jacocoTestReport.xml")
   }
