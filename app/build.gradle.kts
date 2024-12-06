@@ -26,7 +26,8 @@ plugins {
     alias(libs.plugins.baselineprofile)
     alias(libs.plugins.roborazzi)
     alias(libs.plugins.kotlin.serialization)
-    id("org.sonarqube") version "4.1.1.3225"
+    id("org.sonarqube") version "6.0.1.5171" 
+
 }
 
 android {
@@ -147,4 +148,14 @@ baselineProfile {
 
 dependencyGuard {
     configuration("prodReleaseRuntimeClasspath")
+}
+
+sonar {
+  properties {
+    property("sonar.projectKey", "santosh-eic_android_code-")
+    property("sonar.organization", "santosh-eic")
+    property("sonar.host.url", "https://sonarcloud.io")
+    property("sonar.java.coveragePlugin", "jacoco")
+    property("sonar.jacoco.reportPaths", "build/reports/jacoco/test/jacocoTestReport.xml")
+  }
 }
